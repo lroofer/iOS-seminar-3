@@ -7,6 +7,7 @@
 
 import Combine
 
+/// **MainState** is a special class that stores the state of the program using Publishers
 final class MainState {
     @Published private(set) var edittingValue: String
 

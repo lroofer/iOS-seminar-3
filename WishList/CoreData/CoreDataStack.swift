@@ -7,7 +7,9 @@
 
 import CoreData
 
+/// **CoreDataStack** provides an instance for using CoreData.
 class CoreDataStack: ObservableObject {
+    // MARK: - Variables
     static let shared = CoreDataStack()
 
     lazy var persistentContainer: NSPersistentContainer = {
@@ -26,6 +28,10 @@ class CoreDataStack: ObservableObject {
         return persistentContainer.viewContext
     }
 
+    private init() { }
+
+    // MARK: - Methods
+
     func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -37,6 +43,4 @@ class CoreDataStack: ObservableObject {
             }
         }
     }
-
-    private init() { }
 }

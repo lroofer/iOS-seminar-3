@@ -11,10 +11,14 @@ import CoreData
 
 final class WishStoringViewController: UIViewController {
 
+    // MARK: - Properties
     private let table: UITableView = UITableView(frame: .zero)
     private let state: MainState = MainState()
     private let coreDataStack = CoreDataStack.shared
     private var wishArray: [Wish] = []
+
+
+    // MARK: - Functions
 
     override func viewDidLoad() {
         view.backgroundColor = .blue

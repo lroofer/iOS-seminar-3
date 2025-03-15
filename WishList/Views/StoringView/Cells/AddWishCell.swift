@@ -10,15 +10,16 @@ import Combine
 
 final class AddWishCell: UITableViewCell {
 
+    // MARK: - Properties
     static let reuseId: String = "AddWishCell"
 
     private let textView: UITextView = UITextView()
     private let saveButton: UIButton = UIButton(type: .system)
     private let shareButton: UIButton = UIButton(type: .system)
 
+    private weak var state: MainState?
     private var addWish: ((String) -> ())?
     private var shareAction: (() -> ())?
-    private weak var state: MainState?
     private var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
 
     override init(
@@ -35,6 +36,8 @@ final class AddWishCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Methods
+
     func configure(
         state: MainState,
         addWish: @escaping (String) -> (),
@@ -44,6 +47,7 @@ final class AddWishCell: UITableViewCell {
         self.shareAction = shareAction
         self.state = state
 
+        // Subscribe to the value using Combine
         state.$edittingValue.sink { [weak self] value in
             self?.textView.text = value
         }.store(in: &cancellables)

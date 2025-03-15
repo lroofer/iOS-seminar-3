@@ -8,6 +8,7 @@
 import UIKit
 
 final class WrittenWishCell: UITableViewCell {
+    // MARK: - Properties
     static let reuseId: String = "WrittenWishCell"
 
     private let wrap: UIView = UIView()
@@ -32,6 +33,8 @@ final class WrittenWishCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Functions
 
     func configure(with wish: String, onEdit: @escaping () -> (), onRemove: @escaping () -> ()) {
         wishLabel.text = wish
@@ -116,7 +119,6 @@ private enum Constants {
     static let wrapOffSetH: CGFloat = 10
     static let wishLabelOffset: CGFloat = 8
     static let wrapHeight: CGFloat = 40
-
     static let buttonSpacing: CGFloat = 20
     static let buttonSize: CGFloat = 24
 }
