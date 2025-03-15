@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 final class WishStoringViewController: UIViewController {
 
     private let table: UITableView = UITableView(frame: .zero)
     private let defaults = UserDefaults.standard
+    private let state: MainState = MainState()
     private var wishArray: [String] = []
 
     override func viewDidLoad() {
@@ -39,6 +41,24 @@ final class WishStoringViewController: UIViewController {
 
         table.register(WrittenWishCell.self, forCellReuseIdentifier: WrittenWishCell.reuseId)
         table.register(AddWishCell.self, forCellReuseIdentifier: AddWishCell.reuseId)
+    }
+
+    private func add(value: String) {
+        wishArray.append(value)
+        defaults.set(wishArray, forKey: Constants.wishesKey)
+    }
+
+    @discardableResult
+    private func remove(index: Int) -> String {
+        guard index < wishArray.count else {
+            return ""
+        }
+
+        defer {
+            defaults.set(wishArray, forKey: Constants.wishesKey)
+        }
+
+        return wishArray.remove(at: index)
     }
 }
 
@@ -73,9 +93,8 @@ extension WishStoringViewController: UITableViewDataSource {
 
             wishCell.contentView.isUserInteractionEnabled = false
 
-            wishCell.setAddWishMethod { [weak self] wish in
-                self?.wishArray.append(wish)
-                self?.defaults.set(self?.wishArray, forKey: Constants.wishesKey)
+            wishCell.configure(state: state) { [weak self] wish in
+                self?.add(value: wish)
                 tableView.reloadData()
             }
 
@@ -90,7 +109,19 @@ extension WishStoringViewController: UITableViewDataSource {
                 return cell
             }
 
-            wishCell.configure(with: wishArray[indexPath.row])
+            wishCell.contentView.isUserInteractionEnabled = false
+
+            wishCell.configure(with: wishArray[indexPath.row]) { [weak self] in
+                guard let value = self?.remove(index: indexPath.row) else {
+                    return
+                }
+                self?.state.setCustomInEditField(value: value)
+                tableView.reloadData()
+
+            } onRemove: { [weak self] in
+                self?.remove(index: indexPath.row)
+                tableView.reloadData()
+            }
 
             return wishCell
         }

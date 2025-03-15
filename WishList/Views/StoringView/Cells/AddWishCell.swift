@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class AddWishCell: UITableViewCell {
 
@@ -15,6 +16,8 @@ final class AddWishCell: UITableViewCell {
     private let button: UIButton = UIButton(type: .system)
 
     private var addWish: ((String) -> ())?
+    private weak var state: MainState?
+    private var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
 
     override init(
         style: UITableViewCell.CellStyle,
@@ -30,8 +33,13 @@ final class AddWishCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setAddWishMethod(_ addWish: @escaping (String) -> ()) {
+    func configure(state: MainState, _ addWish: @escaping (String) -> ()) {
         self.addWish = addWish
+        self.state = state
+
+        state.$edittingValue.sink { [weak self] value in
+            self?.textView.text = value
+        }.store(in: &cancellables)
     }
 
     private func configureUI() {
