@@ -45,7 +45,8 @@ final class WrittenWishCell: UITableViewCell {
             wrap.topAnchor.constraint(equalTo: topAnchor, constant: Constants.wrapOffSetV),
             wrap.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.wrapOffSetV.negative),
             wrap.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.wrapOffSetH),
-            wrap.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.wrapOffSetH.negative)
+            wrap.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.wrapOffSetH.negative),
+            wrap.heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.wrapHeight)
         ])
 
         wrap.addSubview(wishLabel)
@@ -66,8 +67,5 @@ private enum Constants {
     static let wrapOffSetV: CGFloat = 5
     static let wrapOffSetH: CGFloat = 10
     static let wishLabelOffset: CGFloat = 8
-}
-
-private extension CGFloat {
-    var negative: Self { -self }
+    static let wrapHeight: CGFloat = 40
 }

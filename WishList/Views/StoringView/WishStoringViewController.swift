@@ -21,6 +21,7 @@ final class WishStoringViewController: UIViewController {
         view.addSubview(table)
         table.backgroundColor = .red
         table.dataSource = self
+        table.delegate = self
         table.separatorStyle = .none
         table.layer.cornerRadius = Constants.tableCornerRadius
 
@@ -33,35 +34,71 @@ final class WishStoringViewController: UIViewController {
         ])
 
         table.register(WrittenWishCell.self, forCellReuseIdentifier: WrittenWishCell.reuseId)
+        table.register(AddWishCell.self, forCellReuseIdentifier: AddWishCell.reuseId)
     }
 }
 
 extension WishStoringViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        wishArray.count
+        switch section {
+        case .zero:
+            Constants.firstSectionRows
+        default:
+            wishArray.count
+        }
     }
-    
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        Constants.numberOfSections
+    }
+
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: WrittenWishCell.reuseId,
-            for: indexPath
-        )
+        switch indexPath.section {
+        case .zero:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: AddWishCell.reuseId,
+                for: indexPath
+            )
 
-        guard let wishCell = cell as? WrittenWishCell else {
-            return cell
+            guard let wishCell = cell as? AddWishCell else {
+                return cell
+            }
+
+            wishCell.contentView.isUserInteractionEnabled = false
+
+            wishCell.setAddWishMethod { [weak self] wish in
+                self?.wishArray.append(wish)
+                tableView.reloadData()
+            }
+
+            return wishCell
+        default:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: WrittenWishCell.reuseId,
+                for: indexPath
+            )
+
+            guard let wishCell = cell as? WrittenWishCell else {
+                return cell
+            }
+
+            wishCell.configure(with: wishArray[indexPath.row])
+
+            return wishCell
         }
-
-        wishCell.configure(with: wishArray[indexPath.row])
-
-        return wishCell
     }
+}
+
+extension WishStoringViewController: UITableViewDelegate {
 }
 
 private enum Constants {
     static let tableCornerRadius: CGFloat = 20
     static let tableTopOffset: CGFloat = 20
     static let tableBottomOffset: CGFloat = -20
+    static let numberOfSections: Int = 2
+    static let firstSectionRows: Int = 1
 }
