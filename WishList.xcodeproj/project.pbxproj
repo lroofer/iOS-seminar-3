@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0AB44FB82CDA931300E2D23F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FB72CDA931300E2D23F /* AppDelegate.swift */; };
 		0AB44FBA2CDA931300E2D23F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FB92CDA931300E2D23F /* SceneDelegate.swift */; };
-		0AB44FBC2CDA931300E2D23F /* WishMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FBB2CDA931300E2D23F /* WishMakerViewController.swift */; };
 		0AB44FC12CDA931500E2D23F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB44FC02CDA931500E2D23F /* Assets.xcassets */; };
 		0AB44FCE2CDA969800E2D23F /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FCD2CDA969800E2D23F /* CustomSlider.swift */; };
 		0AB44FD32CDAA9AA00E2D23F /* ColorChangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FD22CDAA9AA00E2D23F /* ColorChangable.swift */; };
@@ -22,7 +21,6 @@
 		0AB44FB42CDA931300E2D23F /* WishList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB44FB72CDA931300E2D23F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB44FB92CDA931300E2D23F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0AB44FBB2CDA931300E2D23F /* WishMakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishMakerViewController.swift; sourceTree = "<group>"; };
 		0AB44FC02CDA931500E2D23F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AB44FC52CDA931500E2D23F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AB44FCD2CDA969800E2D23F /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
@@ -31,6 +29,10 @@
 		0AB44FD72CDAB2E700E2D23F /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		0AB44FD92CDABF0000E2D23F /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0ABFADB72D85BBBF00D6EC4B /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0AB44FB12CDA931300E2D23F /* Frameworks */ = {
@@ -62,11 +64,11 @@
 		0AB44FB62CDA931300E2D23F /* WishList */ = {
 			isa = PBXGroup;
 			children = (
+				0ABFADB72D85BBBF00D6EC4B /* Views */,
 				0AB44FCC2CDA968C00E2D23F /* ColorChangables */,
 				0AB44FCB2CDA963700E2D23F /* Resources */,
 				0AB44FB72CDA931300E2D23F /* AppDelegate.swift */,
 				0AB44FB92CDA931300E2D23F /* SceneDelegate.swift */,
-				0AB44FBB2CDA931300E2D23F /* WishMakerViewController.swift */,
 				0AB44FC52CDA931500E2D23F /* Info.plist */,
 				0AB44FD92CDABF0000E2D23F /* Readme.md */,
 			);
@@ -114,6 +116,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0ABFADB72D85BBBF00D6EC4B /* Views */,
 			);
 			name = WishList;
 			productName = WishList;
@@ -170,7 +175,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AB44FBC2CDA931300E2D23F /* WishMakerViewController.swift in Sources */,
 				0AB44FD62CDAAA5600E2D23F /* SlidersView.swift in Sources */,
 				0AB44FD82CDAB2E700E2D23F /* RandomColor.swift in Sources */,
 				0AB44FB82CDA931300E2D23F /* AppDelegate.swift in Sources */,
