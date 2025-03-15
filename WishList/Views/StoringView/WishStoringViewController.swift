@@ -7,20 +7,19 @@
 
 import UIKit
 import Combine
+import CoreData
 
 final class WishStoringViewController: UIViewController {
 
     private let table: UITableView = UITableView(frame: .zero)
-    private let defaults = UserDefaults.standard
     private let state: MainState = MainState()
-    private var wishArray: [String] = []
+    private let coreDataStack = CoreDataStack.shared
+    private var wishArray: [Wish] = []
 
     override func viewDidLoad() {
         view.backgroundColor = .blue
-        if let values = defaults.array(forKey: Constants.wishesKey) as? [String] {
-            wishArray = values
-        }
         configureTable()
+        fetchWishes()
     }
 
     private func configureTable() {
@@ -43,9 +42,28 @@ final class WishStoringViewController: UIViewController {
         table.register(AddWishCell.self, forCellReuseIdentifier: AddWishCell.reuseId)
     }
 
+    private func fetchWishes() {
+        let fetchRequest: NSFetchRequest<Wish> = Wish.fetchRequest()
+
+        do {
+            wishArray = try coreDataStack.viewContext.fetch(fetchRequest)
+            table.reloadData()
+        } catch {
+            print("Failed to fetch wishes: \(error)")
+        }
+    }
+
     private func add(value: String) {
-        wishArray.append(value)
-        defaults.set(wishArray, forKey: Constants.wishesKey)
+        let context = coreDataStack.viewContext
+        let newWish = Wish(context: context)
+        newWish.content = value
+
+        do {
+            try context.save()
+            fetchWishes()
+        } catch {
+            print("Failed to save wish: \(error)")
+        }
     }
 
     @discardableResult
@@ -54,11 +72,31 @@ final class WishStoringViewController: UIViewController {
             return ""
         }
 
-        defer {
-            defaults.set(wishArray, forKey: Constants.wishesKey)
+        let wishToRemove = wishArray[index]
+        let content = wishToRemove.content ?? ""
+
+        coreDataStack.viewContext.delete(wishToRemove)
+
+        do {
+            try coreDataStack.viewContext.save()
+            fetchWishes()
+        } catch {
+            print("Failed to delete wish: \(error)")
         }
 
-        return wishArray.remove(at: index)
+        return content
+    }
+
+    @objc private func shareButtonTapped() {
+        let wishTexts = wishArray.compactMap { $0.content }
+        let textToShare = "My Wishes:\n" + wishTexts.joined(separator: "\n")
+
+        let activityViewController = UIActivityViewController(
+            activityItems: [textToShare],
+            applicationActivities: nil
+        )
+
+        present(activityViewController, animated: true)
     }
 }
 
@@ -96,6 +134,8 @@ extension WishStoringViewController: UITableViewDataSource {
             wishCell.configure(state: state) { [weak self] wish in
                 self?.add(value: wish)
                 tableView.reloadData()
+            } shareAction: { [weak self] in
+                self?.shareButtonTapped()
             }
 
             return wishCell
@@ -111,7 +151,7 @@ extension WishStoringViewController: UITableViewDataSource {
 
             wishCell.contentView.isUserInteractionEnabled = false
 
-            wishCell.configure(with: wishArray[indexPath.row]) { [weak self] in
+            wishCell.configure(with: wishArray[indexPath.row].content ?? "") { [weak self] in
                 guard let value = self?.remove(index: indexPath.row) else {
                     return
                 }

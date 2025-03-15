@@ -13,9 +13,11 @@ final class AddWishCell: UITableViewCell {
     static let reuseId: String = "AddWishCell"
 
     private let textView: UITextView = UITextView()
-    private let button: UIButton = UIButton(type: .system)
+    private let saveButton: UIButton = UIButton(type: .system)
+    private let shareButton: UIButton = UIButton(type: .system)
 
     private var addWish: ((String) -> ())?
+    private var shareAction: (() -> ())?
     private weak var state: MainState?
     private var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
 
@@ -33,8 +35,13 @@ final class AddWishCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(state: MainState, _ addWish: @escaping (String) -> ()) {
+    func configure(
+        state: MainState,
+        addWish: @escaping (String) -> (),
+        shareAction: @escaping () -> ()
+    ) {
         self.addWish = addWish
+        self.shareAction = shareAction
         self.state = state
 
         state.$edittingValue.sink { [weak self] value in
@@ -47,7 +54,8 @@ final class AddWishCell: UITableViewCell {
         backgroundColor = .systemBackground
 
         configureTextView()
-        configureButton()
+        configureSaveButton()
+        configureShareButton()
     }
 
     private func configureTextView() {
@@ -68,21 +76,38 @@ final class AddWishCell: UITableViewCell {
         ])
     }
 
-    private func configureButton() {
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(Constants.buttonText, for: .normal)
-        button.backgroundColor = .systemBlue
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = Constants.cornerRadius
-        button.addTarget(self, action: #selector(addWishButtonTapped), for: .touchUpInside)
-        addSubview(button)
+    private func configureSaveButton() {
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        saveButton.setTitle(Constants.saveButtonText, for: .normal)
+        saveButton.backgroundColor = .systemBlue
+        saveButton.setTitleColor(.white, for: .normal)
+        saveButton.layer.cornerRadius = Constants.cornerRadius
+        saveButton.addTarget(self, action: #selector(addWishButtonTapped), for: .touchUpInside)
+        addSubview(saveButton)
 
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: Constants.verticalSpacing),
-            button.widthAnchor.constraint(equalToConstant: Constants.buttonWidth),
-            button.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.verticalSpacing.negative),
-            button.centerXAnchor.constraint(equalTo: centerXAnchor)
+            saveButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: Constants.verticalSpacing),
+            saveButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth),
+            saveButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
+            saveButton.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
+    }
+
+    private func configureShareButton() {
+        shareButton.translatesAutoresizingMaskIntoConstraints = false
+        shareButton.setTitle(Constants.shareButtonText, for: .normal)
+        shareButton.backgroundColor = .systemRed
+        shareButton.setTitleColor(.black, for: .normal)
+        shareButton.layer.cornerRadius = Constants.cornerRadius
+        shareButton.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
+        addSubview(shareButton)
+
+        NSLayoutConstraint.activate([
+            shareButton.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: Constants.verticalSpacing),
+            shareButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth),
+            shareButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
+            shareButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.verticalSpacing.negative),
+            shareButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 
@@ -93,6 +118,10 @@ final class AddWishCell: UITableViewCell {
 
         addWish?(text)
         textView.text = ""
+    }
+
+    @objc private func shareButtonTapped() {
+        shareAction?()
     }
 }
 
@@ -106,7 +135,8 @@ private enum Constants {
     static let buttonWidth: CGFloat = 100
     static let buttonHeight: CGFloat = 40
 
-    static let buttonText: String = "Add Wish"
+    static let saveButtonText: String = "Save Wish"
+    static let shareButtonText: String = "Share"
 }
 
 
