@@ -11,6 +11,8 @@ import Combine
 final class WishMakerViewController: UIViewController {
     // MARK: - Properties
     private let addWishButton: UIButton = UIButton(type: .system)
+    private let scheduleButton: UIButton = UIButton(type: .system)
+    private let actionStack: UIStackView = UIStackView()
 
     private var cancellables = Set<AnyCancellable>()
     private var views = [ColorChangable]()
@@ -33,6 +35,8 @@ final class WishMakerViewController: UIViewController {
             item.color
                 .sink { [weak self] color in
                     self?.view.backgroundColor = color
+                    self?.addWishButton.setTitleColor(color, for: .normal)
+                    self?.scheduleButton.setTitleColor(color, for: .normal)
                 }
                 .store(in: &cancellables)
         }
@@ -44,7 +48,7 @@ final class WishMakerViewController: UIViewController {
             RandomColor(color: view.backgroundColor ?? .blue)
         ]
         configureTitles()
-        configureAddWishButton()
+        configureButtons()
         configureControls()
     }
 
@@ -86,24 +90,44 @@ final class WishMakerViewController: UIViewController {
         ])
     }
 
-    private func configureAddWishButton() {
-        view.addSubview(addWishButton)
+    private func configureButtons() {
+        actionStack.axis = .vertical
+        view.addSubview(actionStack)
+        actionStack.spacing = Constants.spacing
 
-        addWishButton.translatesAutoresizingMaskIntoConstraints = false
+        for button in [addWishButton, scheduleButton] {
+            actionStack.addArrangedSubview(button)
+        }
 
+        configureAddWishesButton()
+        configureScheduleWishesButton()
+
+        actionStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            addWishButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            addWishButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.leading),
-            addWishButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.bottom),
-            addWishButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight)
+            actionStack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.bottom),
+            actionStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            actionStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.leading),
+            addWishButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
+            scheduleButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight)
         ])
+    }
 
+    private func configureAddWishesButton() {
         addWishButton.backgroundColor = .white
         addWishButton.setTitleColor(.systemPink, for: .normal)
-        addWishButton.setTitle(Constants.buttonText, for: .normal)
+        addWishButton.setTitle(Constants.addWishesButtonText, for: .normal)
 
         addWishButton.layer.cornerRadius = Constants.buttonRadius
         addWishButton.addTarget(self, action: #selector(addWishButtonPressed), for: .touchUpInside)
+    }
+
+    private func configureScheduleWishesButton() {
+        scheduleButton.backgroundColor = .white
+        scheduleButton.setTitleColor(.systemPink, for: .normal)
+        scheduleButton.setTitle(Constants.scheduleButtonText, for: .normal)
+
+        scheduleButton.layer.cornerRadius = Constants.buttonRadius
+        scheduleButton.addTarget(self, action: #selector(scheduleWishButtonPressed), for: .touchUpInside)
     }
 
     private func configureControls() {
@@ -122,6 +146,11 @@ final class WishMakerViewController: UIViewController {
 
     @objc
     private func addWishButtonPressed() {
+        present(WishStoringViewController(), animated: true)
+    }
+
+    @objc
+    private func scheduleWishButtonPressed() {
         present(WishStoringViewController(), animated: true)
     }
 
@@ -150,6 +179,8 @@ private enum Constants {
     static let buttonHeight: CGFloat = 40
     static let buttonRadius: CGFloat = 10
     static let sliderBottomAnchor: CGFloat = -40
+    static let spacing: CGFloat = 20
 
-    static let buttonText: String = "My wishes"
+    static let addWishesButtonText: String = "My wishes"
+    static let scheduleButtonText: String = "Schedule wish granting"
 }
