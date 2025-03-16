@@ -6,21 +6,65 @@
 //
 
 import UIKit
+import CoreData
 
 final class WishCalendarViewController: UIViewController {
     private let collectionView: UICollectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
     )
+    private let coreDataStack = CoreDataStack.shared
+    private var wishEvents: [WishEventModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchWishes()
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: .add,
+            style: .plain,
+            target: self,
+            action: #selector(addNewEvent)
+        )
+    }
+
+    private func addEvent(_ event: WishEventDataModel) {
+        let context = coreDataStack.viewContext
+        let newEvent = WishEventModel(context: context)
+
+        event.fill(newEvent)
+
+        do {
+            try context.save()
+            fetchWishes()
+        } catch {
+            print("Failed to save wish: \(error)")
+        }
+    }
+
+    @objc
+    private func addNewEvent() {
+        let vc = UINavigationController(
+            rootViewController: CreateWishEventViewController(addEvent: addEvent)
+        )
+        present(vc, animated: true)
     }
 
     private func configureUI() {
         view.backgroundColor = .systemBackground
         configureCollectionView()
+    }
+
+    private func fetchWishes() {
+        let fetchRequest: NSFetchRequest<WishEventModel> = WishEventModel.fetchRequest()
+
+        do {
+            wishEvents = try coreDataStack.viewContext.fetch(fetchRequest)
+            collectionView.reloadData()
+        } catch {
+            print("Failed to fetch wishes: \(error)")
+        }
     }
 
     private func configureCollectionView() {
@@ -67,7 +111,7 @@ extension WishCalendarViewController: UICollectionViewDelegateFlowLayout {
 
 extension WishCalendarViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        wishEvents.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -77,14 +121,8 @@ extension WishCalendarViewController: UICollectionViewDataSource {
             return cell
         }
 
-        wishEventCell.configure(
-            with: WishEventModel(
-                title: "Test",
-                desciption: "Test description",
-                startDate: .now,
-                endDate: .now.addingTimeInterval(10000)
-            )
-        )
+        wishEventCell.configure(with: wishEvents[indexPath.row])
+
         return cell
     }
 }

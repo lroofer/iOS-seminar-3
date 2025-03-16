@@ -33,7 +33,7 @@ final class WishEventCell: UICollectionViewCell {
     // MARK: - Cell Configuration
     func configure(with event: WishEventModel) {
         titleLabel.text = event.title
-        descriptionLabel.text = event.desciption
+        descriptionLabel.text = event.wishDescription
         startDateLabel.text = "Start Date: \(event.startDate.formatted(date: .numeric, time: .shortened))"
         endDateLabel.text = "End Date: \(event.endDate.formatted(date: .numeric, time: .shortened))"
     }

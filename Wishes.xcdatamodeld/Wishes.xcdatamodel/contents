@@ -3,4 +3,10 @@
     <entity name="Wish" representedClassName="Wish" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="WishEventModel" representedClassName="WishEventModel" syncable="YES" codeGenerationType="class">
+        <attribute name="endDateTimeStamp" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startDateTimeStamp" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="wishDescription" optional="YES" attributeType="String"/>
+    </entity>
 </model>
