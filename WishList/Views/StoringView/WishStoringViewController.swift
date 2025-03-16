@@ -137,6 +137,9 @@ extension WishStoringViewController: UITableViewDataSource {
 
             wishCell.configure(state: state) { [weak self] wish in
                 self?.add(value: wish)
+                if !(self?.state.edittingValue.isEmpty ?? true) {
+                    self?.state.setCustomInEditField(value: "")
+                }
                 tableView.reloadData()
             } shareAction: { [weak self] in
                 self?.shareButtonTapped()
