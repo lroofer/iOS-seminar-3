@@ -14,6 +14,7 @@ final class WishCalendarViewController: UIViewController {
     )
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         configureUI()
     }
 
@@ -30,7 +31,17 @@ final class WishCalendarViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.contentInset = Constants.contentInset
 
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.minimumInteritemSpacing = .zero
+            layout.minimumLineSpacing = .zero
+
+            layout.invalidateLayout()
+        }
+
+        collectionView.register(
+            WishEventCell.self,
+            forCellWithReuseIdentifier: WishEventCell.reuseIdentifier
+        )
 
         view.addSubview(collectionView)
 
@@ -46,7 +57,7 @@ final class WishCalendarViewController: UIViewController {
 
 extension WishCalendarViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.bounds.width - 10, height: 100)
+        CGSize(width: collectionView.bounds.width - 10, height: Constants.cellHeight)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -60,8 +71,20 @@ extension WishCalendarViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WishEventCell.reuseIdentifier, for: indexPath)
 
+        guard let wishEventCell = cell as? WishEventCell else {
+            return cell
+        }
+
+        wishEventCell.configure(
+            with: WishEventModel(
+                title: "Test",
+                desciption: "Test description",
+                startDate: .now,
+                endDate: .now.addingTimeInterval(10000)
+            )
+        )
         return cell
     }
 }
@@ -69,4 +92,5 @@ extension WishCalendarViewController: UICollectionViewDataSource {
 private enum Constants {
     static let contentInset: UIEdgeInsets = .init(top: 5, left: 5, bottom: 5, right: 5)
     static let collectionTop: CGFloat = 15
+    static let cellHeight: CGFloat = 200
 }
