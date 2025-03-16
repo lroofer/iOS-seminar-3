@@ -151,7 +151,7 @@ final class WishMakerViewController: UIViewController {
 
     @objc
     private func scheduleWishButtonPressed() {
-        present(WishStoringViewController(), animated: true)
+        navigationController?.pushViewController(WishCalendarViewController(), animated: true)
     }
 
     @objc
