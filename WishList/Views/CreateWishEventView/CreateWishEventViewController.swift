@@ -23,6 +23,7 @@ final class CreateWishEventViewController: UIViewController {
     private let endDateTitle: UILabel = UILabel()
     private let endDatePicker: UIDatePicker = UIDatePicker()
 
+    private let calendarService: CalendarEventsService = CalendarEventsServiceImpl()
 
     init(addEvent: @escaping (WishEventDataModel) -> ()) {
         self.addEvent = addEvent
@@ -143,15 +144,29 @@ final class CreateWishEventViewController: UIViewController {
 
     @objc
     private func createEvent() {
+        guard let title = titleInput.text, !title.isEmpty else {
+            let alert = UIAlertController(title: Constants.titleEmpty, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+
         let model = WishEventDataModel(
-            title: titleInput.text ?? "",
+            title: title,
             description: descriptionInput.text ?? "",
             startDate: startDatePicker.date,
             endDate: endDatePicker.date
         )
 
-        addEvent(model)
-        dismiss(animated: true)
+        if calendarService.create(eventModel: model.calendarEvent) {
+            addEvent(model)
+            dismiss(animated: true)
+        }
+        else {
+            let alert = UIAlertController(title: Constants.errorCalendarTitle, message: Constants.errorCalendarMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
 
 }
@@ -163,6 +178,9 @@ private enum Constants {
     static let descriptionPlaceholder: String = "Enter description"
     static let startDateSelect: String = "Select start date"
     static let endDateSelect: String = "End start date"
+    static let errorCalendarTitle: String = "Can't add the event to the calendar"
+    static let errorCalendarMessage: String = "Check that you've granted the access to the calendar"
+    static let titleEmpty: String = "Title field is in fact empty"
 
     static let titleFont: UIFont = .systemFont(ofSize: 16, weight: .bold)
     static let descriptionFont: UIFont = .systemFont(ofSize: 14)
