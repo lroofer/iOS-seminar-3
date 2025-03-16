@@ -3,37 +3,41 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AB44FB82CDA931300E2D23F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FB72CDA931300E2D23F /* AppDelegate.swift */; };
-		0AB44FBA2CDA931300E2D23F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FB92CDA931300E2D23F /* SceneDelegate.swift */; };
-		0AB44FBC2CDA931300E2D23F /* WishMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FBB2CDA931300E2D23F /* WishMakerViewController.swift */; };
-		0AB44FC12CDA931500E2D23F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB44FC02CDA931500E2D23F /* Assets.xcassets */; };
-		0AB44FCE2CDA969800E2D23F /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FCD2CDA969800E2D23F /* CustomSlider.swift */; };
-		0AB44FD32CDAA9AA00E2D23F /* ColorChangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FD22CDAA9AA00E2D23F /* ColorChangable.swift */; };
-		0AB44FD62CDAAA5600E2D23F /* SlidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FD52CDAAA5600E2D23F /* SlidersView.swift */; };
-		0AB44FD82CDAB2E700E2D23F /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB44FD72CDAB2E700E2D23F /* RandomColor.swift */; };
-		0AB44FDA2CDABF0000E2D23F /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 0AB44FD92CDABF0000E2D23F /* Readme.md */; };
+		0A080D022D85ED2000F0FAE7 /* Wishes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A080D002D85ED2000F0FAE7 /* Wishes.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0AB44FB42CDA931300E2D23F /* WishList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishList.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0AB44FB72CDA931300E2D23F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0AB44FB92CDA931300E2D23F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0AB44FBB2CDA931300E2D23F /* WishMakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishMakerViewController.swift; sourceTree = "<group>"; };
-		0AB44FC02CDA931500E2D23F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0AB44FC52CDA931500E2D23F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0AB44FCD2CDA969800E2D23F /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
-		0AB44FD22CDAA9AA00E2D23F /* ColorChangable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChangable.swift; sourceTree = "<group>"; };
-		0AB44FD52CDAAA5600E2D23F /* SlidersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidersView.swift; sourceTree = "<group>"; };
-		0AB44FD72CDAB2E700E2D23F /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
-		0AB44FD92CDABF0000E2D23F /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		0A080D012D85ED2000F0FAE7 /* Wishes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wishes.xcdatamodel; sourceTree = "<group>"; };
+		0ABFADCF2D85CFFE00D6EC4B /* WishList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0ABFADE12D85CFFF00D6EC4B /* Exceptions for "WishList" folder in "WishList" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0ABFADCE2D85CFFE00D6EC4B /* WishList */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0ABFADD12D85CFFE00D6EC4B /* WishList */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0ABFADE12D85CFFF00D6EC4B /* Exceptions for "WishList" folder in "WishList" target */,
+			);
+			path = WishList;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		0AB44FB12CDA931300E2D23F /* Frameworks */ = {
+		0ABFADCC2D85CFFE00D6EC4B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,147 +47,159 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0AB44FAB2CDA931300E2D23F = {
+		0ABFADC62D85CFFE00D6EC4B = {
 			isa = PBXGroup;
 			children = (
-				0AB44FB62CDA931300E2D23F /* WishList */,
-				0AB44FB52CDA931300E2D23F /* Products */,
+				0A080D002D85ED2000F0FAE7 /* Wishes.xcdatamodeld */,
+				0ABFADD12D85CFFE00D6EC4B /* WishList */,
+				0ABFADD02D85CFFE00D6EC4B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		0AB44FB52CDA931300E2D23F /* Products */ = {
+		0ABFADD02D85CFFE00D6EC4B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0AB44FB42CDA931300E2D23F /* WishList.app */,
+				0ABFADCF2D85CFFE00D6EC4B /* WishList.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		0AB44FB62CDA931300E2D23F /* WishList */ = {
-			isa = PBXGroup;
-			children = (
-				0AB44FCC2CDA968C00E2D23F /* ColorChangables */,
-				0AB44FCB2CDA963700E2D23F /* Resources */,
-				0AB44FB72CDA931300E2D23F /* AppDelegate.swift */,
-				0AB44FB92CDA931300E2D23F /* SceneDelegate.swift */,
-				0AB44FBB2CDA931300E2D23F /* WishMakerViewController.swift */,
-				0AB44FC52CDA931500E2D23F /* Info.plist */,
-				0AB44FD92CDABF0000E2D23F /* Readme.md */,
-			);
-			path = WishList;
-			sourceTree = "<group>";
-		};
-		0AB44FCB2CDA963700E2D23F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0AB44FC02CDA931500E2D23F /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		0AB44FCC2CDA968C00E2D23F /* ColorChangables */ = {
-			isa = PBXGroup;
-			children = (
-				0AB44FD42CDAAA4A00E2D23F /* Sliders */,
-				0AB44FD22CDAA9AA00E2D23F /* ColorChangable.swift */,
-				0AB44FD72CDAB2E700E2D23F /* RandomColor.swift */,
-			);
-			path = ColorChangables;
-			sourceTree = "<group>";
-		};
-		0AB44FD42CDAAA4A00E2D23F /* Sliders */ = {
-			isa = PBXGroup;
-			children = (
-				0AB44FCD2CDA969800E2D23F /* CustomSlider.swift */,
-				0AB44FD52CDAAA5600E2D23F /* SlidersView.swift */,
-			);
-			path = Sliders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0AB44FB32CDA931300E2D23F /* WishList */ = {
+		0ABFADCE2D85CFFE00D6EC4B /* WishList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0AB44FC82CDA931500E2D23F /* Build configuration list for PBXNativeTarget "WishList" */;
+			buildConfigurationList = 0ABFADE22D85CFFF00D6EC4B /* Build configuration list for PBXNativeTarget "WishList" */;
 			buildPhases = (
-				0AB44FB02CDA931300E2D23F /* Sources */,
-				0AB44FB12CDA931300E2D23F /* Frameworks */,
-				0AB44FB22CDA931300E2D23F /* Resources */,
+				0ABFADCB2D85CFFE00D6EC4B /* Sources */,
+				0ABFADCC2D85CFFE00D6EC4B /* Frameworks */,
+				0ABFADCD2D85CFFE00D6EC4B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				0ABFADD12D85CFFE00D6EC4B /* WishList */,
+			);
 			name = WishList;
+			packageProductDependencies = (
+			);
 			productName = WishList;
-			productReference = 0AB44FB42CDA931300E2D23F /* WishList.app */;
+			productReference = 0ABFADCF2D85CFFE00D6EC4B /* WishList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		0AB44FAC2CDA931300E2D23F /* Project object */ = {
+		0ABFADC72D85CFFE00D6EC4B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					0AB44FB32CDA931300E2D23F = {
-						CreatedOnToolsVersion = 15.4;
+					0ABFADCE2D85CFFE00D6EC4B = {
+						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = 0AB44FAF2CDA931300E2D23F /* Build configuration list for PBXProject "WishList" */;
-			compatibilityVersion = "Xcode 14.0";
+			buildConfigurationList = 0ABFADCA2D85CFFE00D6EC4B /* Build configuration list for PBXProject "WishList" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 0AB44FAB2CDA931300E2D23F;
-			productRefGroup = 0AB44FB52CDA931300E2D23F /* Products */;
+			mainGroup = 0ABFADC62D85CFFE00D6EC4B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 0ABFADD02D85CFFE00D6EC4B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0AB44FB32CDA931300E2D23F /* WishList */,
+				0ABFADCE2D85CFFE00D6EC4B /* WishList */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0AB44FB22CDA931300E2D23F /* Resources */ = {
+		0ABFADCD2D85CFFE00D6EC4B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AB44FDA2CDABF0000E2D23F /* Readme.md in Resources */,
-				0AB44FC12CDA931500E2D23F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0AB44FB02CDA931300E2D23F /* Sources */ = {
+		0ABFADCB2D85CFFE00D6EC4B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AB44FBC2CDA931300E2D23F /* WishMakerViewController.swift in Sources */,
-				0AB44FD62CDAAA5600E2D23F /* SlidersView.swift in Sources */,
-				0AB44FD82CDAB2E700E2D23F /* RandomColor.swift in Sources */,
-				0AB44FB82CDA931300E2D23F /* AppDelegate.swift in Sources */,
-				0AB44FD32CDAA9AA00E2D23F /* ColorChangable.swift in Sources */,
-				0AB44FBA2CDA931300E2D23F /* SceneDelegate.swift in Sources */,
-				0AB44FCE2CDA969800E2D23F /* CustomSlider.swift in Sources */,
+				0A080D022D85ED2000F0FAE7 /* Wishes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0AB44FC62CDA931500E2D23F /* Debug */ = {
+		0ABFADE32D85CFFF00D6EC4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 85CPHH3QKW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WishList/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lroofer.WishList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0ABFADE42D85CFFF00D6EC4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 85CPHH3QKW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WishList/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lroofer.WishList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0ABFADE52D85CFFF00D6EC4B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -235,7 +251,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -246,7 +262,7 @@
 			};
 			name = Debug;
 		};
-		0AB44FC72CDA931500E2D23F /* Release */ = {
+		0ABFADE62D85CFFF00D6EC4B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -292,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -302,92 +318,41 @@
 			};
 			name = Release;
 		};
-		0AB44FC92CDA931500E2D23F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 75KQXN6JUC;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WishList/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lroof.WishList;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		0AB44FCA2CDA931500E2D23F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 75KQXN6JUC;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WishList/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lroof.WishList;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0AB44FAF2CDA931300E2D23F /* Build configuration list for PBXProject "WishList" */ = {
+		0ABFADCA2D85CFFE00D6EC4B /* Build configuration list for PBXProject "WishList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0AB44FC62CDA931500E2D23F /* Debug */,
-				0AB44FC72CDA931500E2D23F /* Release */,
+				0ABFADE52D85CFFF00D6EC4B /* Debug */,
+				0ABFADE62D85CFFF00D6EC4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0AB44FC82CDA931500E2D23F /* Build configuration list for PBXNativeTarget "WishList" */ = {
+		0ABFADE22D85CFFF00D6EC4B /* Build configuration list for PBXNativeTarget "WishList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0AB44FC92CDA931500E2D23F /* Debug */,
-				0AB44FCA2CDA931500E2D23F /* Release */,
+				0ABFADE32D85CFFF00D6EC4B /* Debug */,
+				0ABFADE42D85CFFF00D6EC4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0A080D002D85ED2000F0FAE7 /* Wishes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0A080D012D85ED2000F0FAE7 /* Wishes.xcdatamodel */,
+			);
+			currentVersion = 0A080D012D85ED2000F0FAE7 /* Wishes.xcdatamodel */;
+			path = Wishes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
-	rootObject = 0AB44FAC2CDA931300E2D23F /* Project object */;
+	rootObject = 0ABFADC72D85CFFE00D6EC4B /* Project object */;
 }
