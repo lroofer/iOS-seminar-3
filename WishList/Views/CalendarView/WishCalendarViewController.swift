@@ -14,8 +14,18 @@ final class WishCalendarViewController: UIViewController {
         collectionViewLayout: UICollectionViewFlowLayout()
     )
     private let coreDataStack = CoreDataStack.shared
+    private let backgroundColor: UIColor?
     private var wishEvents: [WishEventModel] = []
 
+    init(backgroundColor: UIColor?) {
+        self.backgroundColor = backgroundColor
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -46,13 +56,16 @@ final class WishCalendarViewController: UIViewController {
     @objc
     private func addNewEvent() {
         let vc = UINavigationController(
-            rootViewController: CreateWishEventViewController(addEvent: addEvent)
+            rootViewController: CreateWishEventViewController(backgroundColor: backgroundColor, addEvent: addEvent)
         )
         present(vc, animated: true)
     }
 
     private func configureUI() {
-        view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        view.backgroundColor = backgroundColor
         configureCollectionView()
     }
 
@@ -70,7 +83,7 @@ final class WishCalendarViewController: UIViewController {
     private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = backgroundColor
         collectionView.alwaysBounceVertical = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.contentInset = Constants.contentInset

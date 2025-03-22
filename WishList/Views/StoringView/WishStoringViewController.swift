@@ -15,20 +15,29 @@ final class WishStoringViewController: UIViewController {
     private let table: UITableView = UITableView(frame: .zero)
     private let state: MainState = MainState()
     private let coreDataStack = CoreDataStack.shared
+    private let backgroundColor: UIColor?
     private var wishArray: [Wish] = []
 
-
+    init(backgroundColor: UIColor?) {
+        self.backgroundColor = backgroundColor
+        super.init(nibName: nil, bundle: nil)
+    }
+  
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+  
     // MARK: - Functions
 
     override func viewDidLoad() {
-        view.backgroundColor = .blue
+        view.backgroundColor = backgroundColor
         configureTable()
         fetchWishes()
     }
 
     private func configureTable() {
         view.addSubview(table)
-        table.backgroundColor = .red
+        table.backgroundColor = backgroundColor
         table.dataSource = self
         table.delegate = self
         table.separatorStyle = .none

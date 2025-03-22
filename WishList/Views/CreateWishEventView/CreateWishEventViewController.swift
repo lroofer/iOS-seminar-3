@@ -22,11 +22,13 @@ final class CreateWishEventViewController: UIViewController {
     private let endDateStack: UIStackView = UIStackView()
     private let endDateTitle: UILabel = UILabel()
     private let endDatePicker: UIDatePicker = UIDatePicker()
+    private let backgroundColor: UIColor?
 
     private let calendarService: CalendarEventsService = CalendarEventsServiceImpl()
 
-    init(addEvent: @escaping (WishEventDataModel) -> ()) {
+    init(backgroundColor: UIColor?, addEvent: @escaping (WishEventDataModel) -> ()) {
         self.addEvent = addEvent
+        self.backgroundColor = backgroundColor
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,7 +40,7 @@ final class CreateWishEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = backgroundColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: Constants.createTitleText,
             style: .done,
